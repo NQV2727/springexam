@@ -3,28 +3,31 @@ package vn.com.vti.springexam.controller;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class FortuneController {
-	
-	@RequestMapping(value ="/fortune", produces = "text/html;charset=utf-8")
-	@ResponseBody
-	public String index() {
+	@RequestMapping("/fortune")
+	public String index(Model model) {
 		
 		Random rand = new Random();
 		Integer luck = rand.nextInt(3);
 		
 		String result = "";
-		if (luck == 0) {
+		switch (luck) {
+		case 0:
 			result ="Bad!";
-		} else if (luck == 1) {
+			break;
+		case 1:
 			result ="Normal";
-		} else {
+			break;
+		case 2:
 			result ="Lucky!";
+			break;
 		}
-		return result;
+		model.addAttribute("fortuneValue", result);
+		return "fortune";
 	}
 	
 }
