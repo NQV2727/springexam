@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Input page for wordLength</title>
+<title>Input for publisher search</title>
 </head>
 <body>
-	<form action="result">
-		文字列：
-		<input type="text" name="string"/>
-		<input type="submit" value="長さ"/>
+	<h1>IDで検索</h1>
+	<form action="searchById">
+		<input type="text" name="publisherId"/>
+		<input type="submit" value="検索"/>
 	</form>
 </body>
 </html>

@@ -6,7 +6,7 @@
 
     <!-- スキーマ情報を取得する DB への接続設定 -->
     <jdbcConnection driverClass="org.postgresql.Driver"
-     connectionURL="jdbc:postgresql://localhost:5432/bookshop"
+     connectionURL="jdbc:postgresql://localhost:5432/books"
      userId="postgres"
      password="postgres" />
 
@@ -22,8 +22,7 @@
     </javaClientGenerator>
 
     <!-- コードを生成するテーブルを指定 -->
-    <table  tableName="BUSINESS_TYPE"></table>
-
+	<table  tableName="PREFECTURE"></table>
   </context>
 </generatorConfiguration>
 
