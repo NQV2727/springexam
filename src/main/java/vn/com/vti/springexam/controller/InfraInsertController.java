@@ -8,27 +8,27 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import vn.com.vti.springexam.form.PrefectureForm;
+import vn.com.vti.springexam.form.InfraForm;
 
 @Controller
-@RequestMapping("/prefectureInsert")
-public class PrefectureInsertController {
+@RequestMapping("/infraInsert")
+public class InfraInsertController {
 	
 	@ModelAttribute
-	public PrefectureForm createForm() {
-		return new PrefectureForm();
+	public InfraForm createForm() {
+		return new InfraForm();
 	}
 	
 	@RequestMapping("/input")
-	public String input(PrefectureForm prefectureform) {
-		return"prefecture/prefectureInsertInput";
+	public String input(InfraForm infraForm) {
+		return"infra/infraInsertInput";
 	}
 	
 	@RequestMapping("/confirm")
-	public String confirm(@Valid PrefectureForm prefectureForm,BindingResult bindingResult, Model model) {
+	public String confirm(@Valid InfraForm infraForm,BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			return input(prefectureForm);
+			return input(infraForm);
 		}
-		return"prefecture/prefectureInsertConfirm";
+		return"infra/infraInsertConfirm";
 	}
 }

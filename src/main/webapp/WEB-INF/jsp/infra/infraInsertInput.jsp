@@ -8,27 +8,26 @@
 <head>
 <meta charset="UTF-8">
 <style>.error{color:red}</style>
-<title>Input for prefecture insert</title>
+<title>Input for infrastructure insert</title>
 </head>
 <body>
-	<h1>都道府県を追加</h1>
-	<c:out value="${prefectureForm.id}"></c:out>
-		<form:errors path="*" element="p" cssClass="error"/>
-		<dl>
+	<h1>インフラを追加</h1>
+	<form:form action="confirm" modelAttribute="infraForm">	
+		<dl> 
 			<dt>ID</dt>
 			<dd>
 				<form:errors path="id" element="p" cssClass="error"/>
 				<form:input path="id"/>
 			</dd>
-			<dt>都道府県名</dt>
+			<dt>インフラ名</dt>
 			<dd>
 				<form:errors path="name" element="p" cssClass="error"/>
 				<form:input path="name"/>
 			</dd>
-			<dt>人口</dt>
+			<dt>登録日</dt>
 			<dd>
-				<form:errors path="population" element="p" cssClass="error"/>
-				<form:input path="population"/>
+				<form:errors path="date" element="p" cssClass="error"/>
+				<form:input path="date"/>
 			</dd>
 		</dl>
 		<input type="submit" value="追加"/>
