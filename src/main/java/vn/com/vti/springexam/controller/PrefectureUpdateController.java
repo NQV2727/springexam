@@ -2,11 +2,13 @@ package vn.com.vti.springexam.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import vn.com.vti.springexam.entity.Infrastructure;
 import vn.com.vti.springexam.entity.InfrastructureExample;
 import vn.com.vti.springexam.entity.Prefecture;
@@ -25,10 +27,13 @@ import vn.com.vti.springexam.mapper.Section3Mapper;
 public class PrefectureUpdateController {
 	@Autowired
 	private PrefectureMapper prefectureMapper;
+
 	@Autowired
 	private PrefectureInfrastructureMapper prefectureInfrastructureMapper;
+
 	@Autowired
 	private Section3Mapper section3Mapper;
+
 	@Autowired
 	private InfrastructureMapper infrastructureMapper;
 
@@ -39,34 +44,35 @@ public class PrefectureUpdateController {
 	@RequestMapping("init")
 	public String init(@RequestParam Integer prefectureId, PrefectureForm prefectureForm, Model model) {
 		Prefecture prefecture = prefectureMapper.selectByPrimaryKey(prefectureId);
+
 		prefectureForm.setId(prefecture.getId());
 		prefectureForm.setName(prefecture.getName());
 		prefectureForm.setPopulation(prefecture.getPopulation());
 		prefectureForm.setSection3Id(prefecture.getSection3Id());
+
 		PrefectureInfrastructureExample prefectureInfrastructureExample = new PrefectureInfrastructureExample();
 		prefectureInfrastructureExample.createCriteria().andPrefectureIdEqualTo(prefectureForm.getId());
 		List<PrefectureInfrastructure> prefectureInfrastructureList = prefectureInfrastructureMapper
 				.selectByExample(prefectureInfrastructureExample);
 		for (PrefectureInfrastructure prefectureInfrastructure : prefectureInfrastructureList) {
-			prefectureForm.getInfrastructureIdList().add(prefectureInfrastructure.getInfrastructureId());
+			prefectureForm.getInfrastructureIdList().add(prefectureInfrastructure.getInfrastructerId());
 		}
 		return input(prefectureForm, model);
 	}
 
-@RequestMapping("input")
-public String input( PrefectureForm prefectureForm, Model model) {
-Section3Example section3Example = new Section3Example();
+	@RequestMapping("input")
+	public String input(PrefectureForm prefectureForm, Model model) {
+		Section3Example section3Example = new Section3Example();
+		section3Example.setOrderByClause("id");
+		List<Section3> section3List = section3Mapper.selectByExample(section3Example);
+		model.addAttribute("section3List", section3List);
 
-Copyright © 2022 VTI All rights reserved 77
-section3Example.setOrderByClause("id");
-List<Section3> section3List = section3Mapper.selectByExample(section3Example);
-model.addAttribute("section3List", section3List);
-InfrastructureExample infrastructureExample = new InfrastructureExample();
-infrastructureExample.setOrderByClause("id");
-List<Infrastructure> infrastructureList = infrastructureMapper.selectByExample(infrastructureExample);
-model.addAttribute("infrastructureList", infrastructureList);
-return "prefecture/prefectureUpdateInput";
-}
+		InfrastructureExample infrastructureExample = new InfrastructureExample();
+		infrastructureExample.setOrderByClause("id");
+		List<Infrastructure> infrastructureList = infrastructureMapper.selectByExample(infrastructureExample);
+		model.addAttribute("infrastructureList", infrastructureList);
+		return "prefecture/prefectureUpdateInput";
+	}
 
 	@RequestMapping("confirm")
 	public String confirm(PrefectureForm prefectureForm, Model model) {
@@ -99,7 +105,7 @@ return "prefecture/prefectureUpdateInput";
 		for (Integer infrastructureId : infrastructureIdList) {
 			PrefectureInfrastructure prefectureInfrastructure = new PrefectureInfrastructure();
 			prefectureInfrastructure.setPrefectureId(prefectureForm.getId());
-			prefectureInfrastructure.setInfrastructureId(infrastructureId);
+			prefectureInfrastructure.setInfrastructerId(infrastructureId);
 			prefectureInfrastructureMapper.insert(prefectureInfrastructure);
 		}
 		return "redirect:../prefectureList/index";
