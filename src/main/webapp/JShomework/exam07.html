@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JUMP</title>
+<script type="text/javascript">
+	function jump() {
+		var num = parseInt(document.fm.number.value);
+		if (num % 2 == 0) {
+			alert("偶数です。");
+		} else if (num % 2 != 0) {
+			alert("奇数です。");
+		}
+
+		if (num < 0) {
+			alert("負の値です。");
+			document.fm.action = "http://www.meti.go.jp";
+			document.fm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="fm">
+		<dl>
+			<dt>数値</dt>
+			<dd>
+				<input type="text" name="number" />
+			</dd>
+		</dl>
+		<input type="button" onclick="return jump()" value="実行" />
+	</form>
+
+</body>
+</html>

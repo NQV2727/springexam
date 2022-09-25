@@ -55,7 +55,7 @@ public class PrefectureUpdateController {
 		List<PrefectureInfrastructure> prefectureInfrastructureList = prefectureInfrastructureMapper
 				.selectByExample(prefectureInfrastructureExample);
 		for (PrefectureInfrastructure prefectureInfrastructure : prefectureInfrastructureList) {
-			prefectureForm.getInfrastructureIdList().add(prefectureInfrastructure.getInfrastructerId());
+			prefectureForm.getInfrastructureIdList().add(prefectureInfrastructure.getInfrastructureId());
 		}
 		return input(prefectureForm, model);
 	}
@@ -105,7 +105,7 @@ public class PrefectureUpdateController {
 		for (Integer infrastructureId : infrastructureIdList) {
 			PrefectureInfrastructure prefectureInfrastructure = new PrefectureInfrastructure();
 			prefectureInfrastructure.setPrefectureId(prefectureForm.getId());
-			prefectureInfrastructure.setInfrastructerId(infrastructureId);
+			prefectureInfrastructure.setInfrastructureId(infrastructureId);
 			prefectureInfrastructureMapper.insert(prefectureInfrastructure);
 		}
 		return "redirect:../prefectureList/index";

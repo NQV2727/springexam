@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array Summary</title>
+<script type="text/javascript">
+	var array = [];
+	function pushArray() {
+		var num = document.pushForm.num.value;
+		array.push(num);
+		document.pushForm.num.value = "";
+	}
+	function sumArray() {
+		var summary = 0;
+		for( var i = 0; i< array.length; i++) {
+			summary += parseInt(array[i]);
+		}
+		alert(summary);
+	}
+	function displayArray() {
+		array.join(",");
+		alert(array);
+	}
+</script>
+</head>
+<body>
+<form name="pushForm">
+	<input type="text" name="num"/>
+	<input type="button" value="追加" onclick="pushArray()">
+</form>
+<p>
+<input type="button" value="全表示" onclick="displayArray()">
+<input type="button" value="合計" onclick="sumArray()">
+</body>
+</html>

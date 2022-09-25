@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exam02</title>
+</head>
+<body>
+	<form name="fm" action="/test">
+		<input type="radio" value="0" name="group1"
+			onclick="alert('ありがとうございます');" />いいね <input type="radio" value="1"
+			name="group1" onclick="alert('残念です');" />だめね <br> 
+			<select
+			name="select" onchange="alert(document.fm.select.value)">
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+		</select>
+		<input type="submit" value="submit"/>
+	</form>
+</body>
+</html>

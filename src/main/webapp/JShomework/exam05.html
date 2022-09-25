@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EXAM 05</title>
+<script type="text/javascript">
+	function minus() {
+		var num1 = parseInt(document.fm.val1.value);
+		var num2 = parseInt(document.fm.val2.value);
+		var result = num1 - num2;
+		alert(result);
+	}
+	
+	function join() {
+		var str1 = document.fm.val1.value;
+		var str2 = document.fm.val2.value;
+		var joinStr = str1 + str2;
+		alert(joinStr);
+	}
+</script>
+</head>
+<body>
+	<form action="test" name="fm">
+	数値1<br><input type="text" name="val1"/><br>
+	数値2<br><input type="text" name="val2"/><br>
+	<input type="button" value="減算" onclick="minus()"/>
+	<input type="button" value="連結" onclick="join()"/>
+	</form>
+</body>
+</html>

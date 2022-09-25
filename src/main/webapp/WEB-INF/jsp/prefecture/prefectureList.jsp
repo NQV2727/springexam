@@ -32,6 +32,18 @@
 				<td><c:out value="${prefecture.section8Id}"/></td>	
 			</tr>
 		</c:forEach>
+		<c:forEach items="${prefectures}" var="prefecture" varStatus="index">
+			<tr>
+				<td>${index.count}</td>
+				<td><c:out value="${prefecture.name}"/></td>
+				<td 
+					<c:if test="${prefecture.population>2000000}">class="bigcity"</c:if>>
+					<fmt:formatNumber pattern="#,###" value="${prefecture.population }"/>
+				</td>
+				<td><c:out value="${prefecture.section3Id}"/></td>
+				<td><c:out value="${prefecture.section8Id}"/></td>	
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EXAM 06</title>
+<script type="text/javascript">
+	function upper() {
+		var str = document.fm.input.value;
+		var result1 = str.toUpperCase();
+		alert(result1);
+	}
+	
+	function len() {
+		var str = document.fm.input.value;
+		var result2 = str.length;
+		alert(result2);
+	}
+</script>
+</head>
+<body>
+	<form name="fm">
+	文字列<br><input type="text" name="input"/><br>
+	<input type="button" value="大文字" onclick="upper()"/>
+	<input type="button" value="文字列長" onclick="len()"/>
+	</form>
+</body>
+</html>
